@@ -27,3 +27,7 @@ result = Enum.reduce(items, %{
 end)
 
 IO.inspect result
+
+search = IO.gets("search: ")
+search = String.replace(search, "\n", "")
+IO.inspect Enum.find_index(items, fn x -> x == search end)
