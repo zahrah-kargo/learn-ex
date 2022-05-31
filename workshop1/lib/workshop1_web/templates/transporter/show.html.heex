@@ -1,0 +1,28 @@
+<h1>Show Transporter</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @transporter.name %>
+  </li>
+
+  <li>
+    <strong>Phone number:</strong>
+    <%= @transporter.phone_number %>
+  </li>
+
+  <li>
+    <strong>Npwp number:</strong>
+    <%= @transporter.npwp_number %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @transporter.status %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.transporter_path(@conn, :edit, @transporter) %></span> |
+<span><%= link "Back", to: Routes.transporter_path(@conn, :index) %></span>

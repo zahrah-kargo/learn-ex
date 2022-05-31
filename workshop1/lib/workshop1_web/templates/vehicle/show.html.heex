@@ -1,0 +1,18 @@
+<h1>Show Vehicle</h1>
+
+<ul>
+
+  <li>
+    <strong>Vehicle plate:</strong>
+    <%= @vehicle.vehicle_plate %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @vehicle.status %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.vehicle_path(@conn, :edit, @vehicle) %></span> |
+<span><%= link "Back", to: Routes.vehicle_path(@conn, :index) %></span>

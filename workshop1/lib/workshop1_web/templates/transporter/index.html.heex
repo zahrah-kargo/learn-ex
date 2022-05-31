@@ -1,0 +1,32 @@
+<h1>Listing Transporters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone number</th>
+      <th>Npwp number</th>
+      <th>Status</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for transporter <- @transporters do %>
+    <tr>
+      <td><%= transporter.name %></td>
+      <td><%= transporter.phone_number %></td>
+      <td><%= transporter.npwp_number %></td>
+      <td><%= transporter.status %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.transporter_path(@conn, :show, transporter) %></span>
+        <span><%= link "Edit", to: Routes.transporter_path(@conn, :edit, transporter) %></span>
+        <span><%= link "Delete", to: Routes.transporter_path(@conn, :delete, transporter), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Transporter", to: Routes.transporter_path(@conn, :new) %></span>
