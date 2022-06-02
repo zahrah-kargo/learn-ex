@@ -1,12 +1,12 @@
-defmodule Workshop1Web.Router do
-  use Workshop1Web, :router
+defmodule KargoSystemWeb.Router do
+  use KargoSystemWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    # plug :put_root_layout, {Workshop1Web.LayoutView, :root}
-    # plug :protect_from_forgery
+    plug :put_root_layout, {KargoSystemWeb.LayoutView, :root}
+    plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
 
@@ -14,22 +14,16 @@ defmodule Workshop1Web.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Workshop1Web do
+  scope "/", KargoSystemWeb do
     pipe_through :browser
-
-    forward "/graphiql", Absinthe.Plug.GraphiQL,
-      schema: Workshop1Web.Schema, # GraphQL Schema Module
-      interface: :simple,
-      context: %{pubsub: Workshop1Web.Endpoint}
 
     get "/", PageController, :index
     resources "/vehicles", VehicleController
     resources "/transporters", TransporterController
-    put "/transporter/status/:id", TransporterController, :update_status
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Workshop1Web do
+  # scope "/api", KargoSystemWeb do
   #   pipe_through :api
   # end
 
@@ -46,7 +40,7 @@ defmodule Workshop1Web.Router do
     scope "/" do
       pipe_through :browser
 
-      live_dashboard "/dashboard", metrics: Workshop1Web.Telemetry
+      live_dashboard "/dashboard", metrics: KargoSystemWeb.Telemetry
     end
   end
 
