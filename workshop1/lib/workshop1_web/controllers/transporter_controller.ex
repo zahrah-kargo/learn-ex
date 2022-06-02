@@ -63,6 +63,9 @@ defmodule Workshop1Web.TransporterController do
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", transporter: transporter, changeset: changeset)
+
+      Ecto.NoResultsError ->
+          {:error, :not_found, "No result found"}
     end
   end
 
