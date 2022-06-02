@@ -20,7 +20,7 @@ defmodule KargoSystem.MixProject do
   def application do
     [
       mod: {KargoSystem.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :absinthe_plug]
     ]
   end
 

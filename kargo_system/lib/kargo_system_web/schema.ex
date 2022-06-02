@@ -2,7 +2,7 @@ defmodule KargoSystemWeb.Schema do
   # required to make a module graphQL Schema
   use Absinthe.Schema
   # this is the resolver that will be used
-  alias KargoSystemWeb.TransporterResolver
+  # alias KargoSystemWeb.TransporterResolver
 
   object :transporter do
     field :id, non_null(:id)

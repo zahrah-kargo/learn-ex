@@ -6,7 +6,7 @@ defmodule KargoSystemWeb.Router do
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, {KargoSystemWeb.LayoutView, :root}
-    plug :protect_from_forgery
+    # plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
 
@@ -15,11 +15,16 @@ defmodule KargoSystemWeb.Router do
   end
 
   scope "/", KargoSystemWeb do
-    pipe_through :browser
+    pipe_through :api
 
     get "/", PageController, :index
     resources "/vehicles", VehicleController
     resources "/transporters", TransporterController
+  end
+
+  scope "/" do
+    forward "/graph", Absinthe.Plug, schema: KargoSystemWeb.Schema
+    forward "/graphiql", Absinthe.Plug.GraphiQL, schema: KargoSystemWeb.Schema
   end
 
   # Other scopes may use custom stacks.
